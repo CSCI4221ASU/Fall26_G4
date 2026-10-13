@@ -100,3 +100,10 @@
     Project Goals
     Our main goal is to create a functional and easy-to-use grade calculator while gaining experience with software development, GitHub, version control, teamwork, testing, and project documentation.
 
+
+
+## Project 2
+
+### Jalen Davis
+
+### Malachi Johnson
