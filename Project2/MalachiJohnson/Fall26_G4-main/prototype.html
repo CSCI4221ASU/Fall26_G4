@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Final Grade Calculator Prototype</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #eef2f7;
+    color: #17243a;
+    font-family: Arial, sans-serif;
+  }
+  main {
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 28px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px #17243a15;
+  }
+  h1 { margin-bottom: 8px; }
+  .subtitle { color: #536175; line-height: 1.5; }
+  nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 24px 0; }
+  button {
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 8px;
+    background: #174ea6;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  button.secondary { background: #e7edf6; color: #17243a; }
+  button:focus-visible, input:focus-visible {
+    outline: 3px solid #f5a623;
+    outline-offset: 3px;
+  }
+  section[hidden] { display: none; }
+  .row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 12px;
+    align-items: center;
+    margin: 14px 0;
+  }
+  input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #aab5c4;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  label { display: block; margin: 16px 0 8px; }
+  .actions { display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
+  .result {
+    background: #edf5ff;
+    padding: 24px;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+  .score { font-size: 42px; font-weight: bold; margin: 8px 0; }
+  .error { color: #b42318; font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 12px 8px; border-bottom: 1px solid #ddd; }
+  footer { margin-top: 28px; color: #536175; font-size: 13px; }
+  @media (max-width: 600px) {
+    main { margin: 12px; padding: 18px; }
+    .row { gap: 6px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Final Grade Calculator</h1>
+  <p class="subtitle">Enter your grades. See your results. Plan your final exam.</p>
+
+  <nav aria-label="Prototype screens">
+    <button type="button" onclick="show('entry')">Grade Entry</button>
+    <button type="button" class="secondary" onclick="show('goal')">Final Exam Goal</button>
+  </nav>
+
+  <section id="entry">
+    <h2>Grade Entry</h2>
+    <p>Enter each category average and its weight from your syllabus.</p>
+
+    <div class="row">
+      <strong>Category</strong>
+      <strong>Grade (%)</strong>
+      <strong>Weight (%)</strong>
+    </div>
+    <div class="row">
+      <span>Assignments</span>
+      <input id="g0" aria-label="Assignments grade" type="number" min="0" max="100" value="90">
+      <input id="w0" aria-label="Assignments weight" type="number" min="0" max="100" value="20">
+    </div>
+    <div class="row">
+      <span>Quizzes</span>
+      <input id="g1" aria-label="Quizzes grade" type="number" min="0" max="100" value="85">
+      <input id="w1" aria-label="Quizzes weight" type="number" min="0" max="100" value="20">
+    </div>
+    <div class="row">
+      <span>Exams</span>
+      <input id="g2" aria-label="Exams grade" type="number" min="0" max="100" value="80">
+      <input id="w2" aria-label="Exams weight" type="number" min="0" max="100" value="30">
+    </div>
+    <div class="row">
+      <span>Final Exam</span>
+      <input id="g3" aria-label="Final exam grade" type="number" min="0" max="100" value="88">
+      <input id="w3" aria-label="Final exam weight" type="number" min="0" max="100" value="30">
+    </div>
+
+    <p id="entryError" class="error" role="alert"></p>
+    <div class="actions">
+      <button type="button" onclick="calculate()">Calculate</button>
+      <button type="button" class="secondary" onclick="clearGrades()">Clear</button>
+    </div>
+  </section>
+
+  <section id="results" hidden>
+    <h2>Grade Results</h2>
+    <div class="result" aria-live="polite">
+      <p>Your calculated course grade</p>
+      <p id="finalScore" class="score"></p>
+      <p id="letterScore"></p>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Category</th><th>Grade</th><th>Weight</th></tr>
+      </thead>
+      <tbody id="breakdown"></tbody>
+    </table>
+    <p class="subtitle">Example scale: A ≥ 90, B ≥ 80, C ≥ 70, D ≥ 60, F below 60. Check your syllabus.</p>
+    <div class="actions">
+      <button type="button" onclick="show('entry')">Edit Grades</button>
+      <button type="button" class="secondary" onclick="show('goal')">Final Exam Goal</button>
+    </div>
+  </section>
+
+  <section id="goal" hidden>
+    <h2>Final Exam Goal</h2>
+    <p>Use your average for completed coursework before the final, out of 100.</p>
+
+    <label for="current">Current grade before final (%)</label>
+    <input id="current" type="number" min="0" max="100" value="85">
+
+    <label for="finalWeight">Final exam weight (%)</label>
+    <input id="finalWeight" type="number" min="0" max="100" value="20">
+
+    <label for="desired">Desired course grade (%)</label>
+    <input id="desired" type="number" min="0" max="100" value="90">
+
+    <p id="goalError" class="error" role="alert"></p>
+    <div id="goalResult" class="result" aria-live="polite" hidden></div>
+
+    <div class="actions">
+      <button type="button" onclick="calculateGoal()">Calculate Required Score</button>
+      <button type="button" class="secondary" onclick="show('entry')">Back</button>
+    </div>
+  </section>
+
+  <footer>Project 2 interactive prototype • Group 4 • Proposed design</footer>
+</main>
+
+<script>
+const names = ["Assignments", "Quizzes", "Exams", "Final Exam"];
+const get = id => document.getElementById(id);
+
+function show(id) {
+  ["entry", "results", "goal"].forEach(screen => {
+    get(screen).hidden = screen !== id;
+  });
+}
+
+function readPercent(id) {
+  const text = get(id).value.trim();
+  const value = Number(text);
+  if (text === "" || !Number.isFinite(value) || value < 0 || value > 100) {
+    throw new Error("Enter a number from 0 to 100 in every required field.");
+  }
+  return value;
+}
+
+function calculate() {
+  get("entryError").textContent = "";
+  try {
+    const grades = names.map((_, i) => readPercent("g" + i));
+    const weights = names.map((_, i) => readPercent("w" + i));
+    const total = weights.reduce((a, b) => a + b, 0);
+
+    if (Math.abs(total - 100) > 0.000001) {
+      throw new Error("Weights must total 100%. Current total: " + total + "%.");
+    }
+
+    const score = grades.reduce((sum, grade, i) => sum + grade * weights[i] / 100, 0);
+    const letter = score >= 90 ? "A" : score >= 80 ? "B" :
+                   score >= 70 ? "C" : score >= 60 ? "D" : "F";
+
+    get("finalScore").textContent = score.toFixed(2) + "%";
+    get("letterScore").textContent = "Letter grade: " + letter;
+    get("breakdown").innerHTML = names.map((name, i) =>
+      `<tr><td>${name}</td><td>${grades[i]}%</td><td>${weights[i]}%</td></tr>`
+    ).join("");
+    show("results");
+  } catch (error) {
+    get("entryError").textContent = error.message;
+  }
+}
+
+function clearGrades() {
+  names.forEach((_, i) => {
+    get("g" + i).value = "";
+    get("w" + i).value = "";
+  });
+  get("entryError").textContent = "";
+}
+
+function calculateGoal() {
+  get("goalError").textContent = "";
+  get("goalResult").hidden = true;
+  try {
+    const current = readPercent("current");
+    const weight = readPercent("finalWeight") / 100;
+    const desired = readPercent("desired");
+
+    if (weight <= 0 || weight >= 1) {
+      throw new Error("Final exam weight must be greater than 0% and less than 100%.");
+    }
+
+    const required = (desired - current * (1 - weight)) / weight;
+    let message = "You need " + required.toFixed(2) + "% on your final exam.";
+
+    if (required > 100) {
+      message += " This goal requires extra credit under the entered weights.";
+    } else if (required <= 0) {
+      message = "A final exam score of 0% is sufficient to reach your goal.";
+    }
+
+    get("goalResult").textContent = message;
+    get("goalResult").hidden = false;
+  } catch (error) {
+    get("goalError").textContent = error.message;
+  }
+}
+</script>
+</body>
+</html>
