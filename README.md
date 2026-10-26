@@ -106,7 +106,11 @@
 
 ### Jalen Davis
 
+  See [Jalen Davis's Project 2](Project2/JalenDavis/Fall26_G4-main/README.md)
+
 ### Malachi Johnson
+
+  See [Malachi Johnson's Project 2](Project2/MalachiJohnson/Fall26_G4-main/prototype_design.md)
 
 ## Project 3
 
