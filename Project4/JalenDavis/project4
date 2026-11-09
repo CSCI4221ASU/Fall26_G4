@@ -1,0 +1,535 @@
+# Project 4: Software Architecture
+## Final Grade Calculator
+
+**Course:** CSCI 4221  
+**Group:** 4  
+**Team Members:** Jalen Davis and Malachi Johnson  
+**Product:** Final Grade Calculator  
+**Product Owner:** All Team Members  
+**ScrumMaster:** Course Instructor  
+**Sprint:** Sprint 4  
+**Project Period:** October 20–30, 2026
+
+---
+
+# Project Overview
+
+The purpose of Project 4 is to develop the software architecture for our Final Grade Calculator. Our team will design the application as cloud-based software and identify its major components, subcomponents, database structure, and necessary application files.
+
+The Final Grade Calculator is designed to help college students monitor their academic performance by calculating current course grades, determining the scores needed on final examinations, and estimating their final course grades.
+
+Our proposed architecture will use Java, Spring Boot, HTML, CSS, JavaScript, MySQL, and Docker.
+
+# Scrum Meeting Schedule
+
+Our team will use the Scrum methodology to organize development tasks, discuss progress, assign responsibilities, and review project requirements.
+
+We have planned three team meetings during the October 20–30 project period.
+
+| Meeting | Date | Time | Meeting Description |
+|---|---|---|---|
+| Meeting 1 | October 21, 2026 | 3:00 PM – 3:30 PM | Discuss software architecture, cloud-based applications, Docker, containers, images, daemons, and major application components. |
+| Meeting 2 | October 26, 2026 | 3:00 PM – 3:30 PM | Review component assignments, identify necessary files, discuss database usage, and develop database table structures. |
+| Meeting 3 | October 29, 2026 | 3:00 PM – 3:30 PM | Review completed architecture sections, evaluate team progress, address outstanding tasks, and prepare final documentation. |
+
+**Note:** These are proposed meeting times and agendas. The individual meeting-minute documents should reflect the meetings actually held and the discussions that actually occurred.
+
+## Meeting 1: Architecture and Cloud Computing
+
+**Date:** October 21, 2026  
+**Time:** 3:00 PM – 3:30 PM
+
+**Discussion Topics:**
+
+1. Define software architecture and its importance in application development.
+2. Discuss three common architectural patterns: layered architecture, client-server architecture, and Model-View-Controller (MVC).
+3. Discuss what cloud-based software is and how our application could operate in a cloud environment.
+4. Define Docker, containers, Docker images, and Docker daemons.
+5. Identify the major components of the Final Grade Calculator.
+6. Discuss the proposed technologies that will be used for development.
+
+**Expected Outcome:**
+
+Establish an overall understanding of the application's architecture and determine the major components required for the Final Grade Calculator.
+
+## Meeting 2: Components and Database Design
+
+**Date:** October 26, 2026  
+**Time:** 3:00 PM – 3:30 PM
+
+**Discussion Topics:**
+
+1. Review the major application components.
+2. Identify the subcomponents within each major component.
+3. Determine the necessary files for each component.
+4. Discuss how each component will interact with the database.
+5. Decide whether the application will use a local or shared database.
+6. Identify the database tables required by the application.
+7. Assign responsibilities for individual components and database tables.
+
+**Expected Outcome:**
+
+Establish component responsibilities, identify necessary application files, and develop the initial database structure.
+
+## Meeting 3: Architecture Review and Finalization
+
+**Date:** October 29, 2026  
+**Time:** 3:00 PM – 3:30 PM
+
+**Discussion Topics:**
+
+1. Review the proposed Docker container configuration.
+2. Review the responsibilities of each application component.
+3. Evaluate the database tables and their relationships.
+4. Review individual team member assignments.
+5. Identify missing documentation or unfinished tasks.
+6. Review the completed architecture document.
+7. Prepare the final GitHub submission.
+
+**Expected Outcome:**
+
+Complete the architecture documentation and prepare the required Project 4 deliverables for submission.
+
+---
+
+# Product Backlog Items (PBIs)
+
+The following product backlog items represent the tasks our team will complete during Project 4.
+
+| PBI | Status | Sprint | Estimate | Assigned | Reviewer |
+|---|---|---|---|---|---|
+| Research software architecture patterns | Proposed | Sprint 4 | 2 days | Both members | Both members |
+| Identify cloud-based application architecture | Proposed | Sprint 4 | 1 day | Jalen Davis | Malachi Johnson |
+| Design Docker container description | Proposed | Sprint 4 | 2 days | Jalen Davis | Malachi Johnson |
+| Identify major application components | Proposed | Sprint 4 | 2 days | Both members | Both members |
+| Identify component subcomponents and necessary files | Proposed | Sprint 4 | 2 days | Both members | Both members |
+| Design Courses database table | Proposed | Sprint 4 | 1 day | Malachi Johnson | Jalen Davis |
+| Design Assignments database table | Proposed | Sprint 4 | 1 day | Jalen Davis | Malachi Johnson |
+| Review and finalize architecture documentation | Proposed | Sprint 4 | 1 day | Both members | Both members |
+
+---
+
+# Team Member Responsibilities
+
+Each team member will be responsible for developing and documenting an assigned application component and its related database table.
+
+| Team Member | Assigned Component | Database Responsibility |
+|---|---|---|
+| Jalen Davis | Grade Calculation Component | Assignments Table |
+| Malachi Johnson | Course Management Component | Courses Table |
+
+Both team members will collaborate on the overall architecture, Docker container design, user interface, and database integration.
+
+---
+
+# Section 1: Description of Our Container
+
+## 1.1 Cloud-Based Application Description
+
+Our team proposes developing the Final Grade Calculator as a cloud-based application.
+
+Cloud-based software is an application that operates using cloud computing resources rather than depending entirely on a user's local computer.
+
+Students will be able to access the Final Grade Calculator through a web browser. The backend application will process user requests, perform grade calculations, and retrieve information from a shared MySQL database.
+
+The proposed application will use a three-tier architecture consisting of:
+
+1. **Presentation Layer:** Provides the user interface where students enter grades and view calculated results.
+2. **Application Layer:** Processes application requests, validates information, and performs grade calculations.
+3. **Data Layer:** Stores and retrieves course information, assignment records, and grade information.
+
+## 1.2 Docker Description
+
+Docker is a platform used to package and run applications inside containers.
+
+Our Final Grade Calculator will use Docker to package the backend application and its required dependencies into a portable environment.
+
+This will allow the application to operate consistently across different environments without requiring developers to manually configure every dependency on each machine.
+
+## 1.3 Container Description
+
+A container is an isolated environment that contains the application and the resources needed to run it.
+
+Our proposed Docker container will contain:
+
+- Java Runtime Environment.
+- Spring Boot backend application.
+- Application source code.
+- Required Java libraries and dependencies.
+- Maven-built application JAR file.
+- Application configuration files.
+- Database connection configuration.
+
+The container will run the backend application and communicate with the MySQL database through a configured database connection.
+
+The MySQL database will operate separately from the application container.
+
+## 1.4 Docker Image
+
+A Docker image is a packaged template used to create containers.
+
+Our team will create a Docker image containing the Final Grade Calculator backend application and its required dependencies.
+
+The image will be used to create a running application container in the cloud environment.
+
+## 1.5 Docker Daemon
+
+A Docker daemon is a background service responsible for managing Docker resources.
+
+It manages:
+- Docker images.
+- Running containers.
+- Container networks.
+- Docker volumes.
+- Container lifecycle operations.
+
+The Docker daemon will manage the container used to operate our Final Grade Calculator backend application.
+
+## 1.6 Proposed Container Configuration Files
+
+| File | Purpose |
+|---|---|
+| Dockerfile | Defines how the application Docker image is built. |
+| pom.xml | Defines Java dependencies and Maven build configuration. |
+| docker-compose.yml | Defines the application and database services for local development and testing. |
+| application.properties | Contains Spring Boot application configuration. |
+| .dockerignore | Excludes unnecessary files from the Docker build context. |
+
+Database credentials will be provided through environment variables rather than stored directly in the Docker image.
+
+## 1.7 Cloud Deployment Design
+
+Our proposed cloud deployment will contain two primary services:
+
+**Application Service:**
+- Runs the Spring Boot backend inside a Docker container.
+- Processes requests from the frontend.
+- Performs grade calculations.
+- Communicates with the database.
+
+**Database Service:**
+- Runs MySQL separately from the application container.
+- Stores course and assignment information.
+- Provides data to the backend application when requested.
+
+The application will communicate with the database through a network connection.
+
+---
+
+# Section 2: Components and Necessary Files
+
+Our Final Grade Calculator will consist of four major components:
+
+1. User Interface Component.
+2. Grade Calculation Component.
+3. Course Management Component.
+4. Database Component.
+
+Each component will perform specific responsibilities within the application.
+
+## 2.1 User Interface Component
+
+**Purpose:**
+
+The User Interface Component allows students to interact with the Final Grade Calculator.
+
+Students will be able to enter course information, submit assignment grades, and view calculated results.
+
+**Subcomponents:**
+
+- Course information input.
+- Assignment grade input.
+- Current course grade display.
+- Required final examination score display.
+- Estimated final grade display.
+
+**Necessary Files:**
+
+| File | Description |
+|---|---|
+| index.html | Provides the main application webpage. |
+| style.css | Controls the appearance and layout of the application. |
+| script.js | Handles frontend interactions and user input. |
+
+**Database Usage:**
+
+The User Interface Component will communicate with the backend application through application requests. It will not connect directly to the MySQL database.
+
+The backend will retrieve and return the information needed by the user interface.
+
+## 2.2 Grade Calculation Component
+
+**Assigned Team Member:** Jalen Davis
+
+**Purpose:**
+
+The Grade Calculation Component is responsible for performing the mathematical calculations required by the Final Grade Calculator.
+
+It will process assignment scores, grading weights, and course information to determine student grades.
+
+**Subcomponents:**
+
+- Current grade calculator.
+- Weighted grade calculator.
+- Required final examination score calculator.
+- Estimated final course grade calculator.
+- Grade validation.
+
+**Necessary Files:**
+
+| File | Description |
+|---|---|
+| GradeCalculator.java | Contains the primary grade calculation logic. |
+| GradeCalculationService.java | Processes grade calculation operations. |
+| GradeCalculationController.java | Handles requests related to grade calculations. |
+| GradeRepository.java | Provides access to stored grade information. |
+
+**Database Usage:**
+
+The Grade Calculation Component will retrieve assignment scores and grading information from the shared MySQL database.
+
+It will use this information to calculate current course averages and determine the scores required on final examinations.
+
+## 2.3 Course Management Component
+
+**Assigned Team Member:** Malachi Johnson
+
+**Purpose:**
+
+The Course Management Component manages the course information and assignment details entered into the application.
+
+**Subcomponents:**
+
+- Course creation.
+- Course information management.
+- Assignment management.
+- Grading category management.
+- Course information validation.
+
+**Necessary Files:**
+
+| File | Description |
+|---|---|
+| Course.java | Represents course information. |
+| Assignment.java | Represents assignment information. |
+| CourseService.java | Handles course management operations. |
+| CourseController.java | Handles course-related application requests. |
+| CourseRepository.java | Retrieves and stores course records. |
+
+**Database Usage:**
+
+The Course Management Component will use the shared MySQL database to store and retrieve course information.
+
+It will also maintain relationships between courses and their associated assignments.
+
+## 2.4 Database Component
+
+**Purpose:**
+
+The Database Component is responsible for storing, organizing, and retrieving information used by the Final Grade Calculator.
+
+Our application will use a shared MySQL relational database.
+
+**Subcomponents:**
+
+- Course records.
+- Assignment records.
+- Grade records.
+- Database connection management.
+- Data retrieval and storage.
+
+**Necessary Files:**
+
+| File | Description |
+|---|---|
+| DatabaseConfig.java | Configures database connectivity. |
+| CourseRepository.java | Provides access to course records. |
+| AssignmentRepository.java | Provides access to assignment records. |
+| application.properties | Contains database and application configuration. |
+
+**Database Usage:**
+
+The database will be shared across the application.
+
+The User Interface, Grade Calculation, and Course Management components will access information through the backend application and its data access layer.
+
+This design avoids maintaining separate databases for individual application components.
+
+## 2.5 Proposed Application File Structure
+
+The following is the proposed organization of the application source code:
+
+```text
+FinalGradeCalculator/
+│
+├── src/
+│   └── main/
+│       ├── java/
+│       │   └── com/finalgradecalculator/
+│       │       │
+│       │       ├── controller/
+│       │       │   ├── CourseController.java
+│       │       │   └── GradeCalculationController.java
+│       │       │
+│       │       ├── model/
+│       │       │   ├── Course.java
+│       │       │   └── Assignment.java
+│       │       │
+│       │       ├── service/
+│       │       │   ├── CourseService.java
+│       │       │   └── GradeCalculationService.java
+│       │       │
+│       │       ├── repository/
+│       │       │   ├── CourseRepository.java
+│       │       │   └── AssignmentRepository.java
+│       │       │
+│       │       └── FinalGradeCalculatorApplication.java
+│       │
+│       └── resources/
+│           ├── static/
+│           │   ├── index.html
+│           │   ├── style.css
+│           │   └── script.js
+│           │
+│           └── application.properties
+│
+├── Dockerfile
+├── docker-compose.yml
+├── pom.xml
+└── .dockerignore
+```
+
+This is a proposed source-code structure and does not represent files already implemented in the repository.
+
+---
+
+# Section 3: Structure of the Related Tables in the Database
+
+## 3.1 Database Overview
+
+Our Final Grade Calculator will use MySQL as its relational database management system.
+
+A relational database organizes information into tables containing rows and columns.
+
+Our proposed database will store course information and assignment grades.
+
+The database will use primary keys to uniquely identify records and foreign keys to establish relationships between related tables.
+
+The database will be shared by the application's backend components.
+
+## 3.2 Courses Table
+
+**Assigned Team Member:** Malachi Johnson
+
+**Related Component:** Course Management Component
+
+**Table Name:** Courses
+
+The Courses table will store information about the courses entered into the Final Grade Calculator.
+
+| Column Name | Data Type | Key | Description |
+|---|---|---|---|
+| course_id | INT | Primary Key | Unique identifier for each course. |
+| course_name | VARCHAR(100) | | Name of the course. |
+| course_code | VARCHAR(20) | | Course identification code. |
+| credit_hours | INT | | Number of course credit hours. |
+
+**Purpose:**
+
+The Courses table will allow the application to organize and maintain course information.
+
+Each course will receive a unique course ID that can be referenced by the Assignments table.
+
+## 3.3 Assignments Table
+
+**Assigned Team Member:** Jalen Davis
+
+**Related Component:** Grade Calculation Component
+
+**Table Name:** Assignments
+
+The Assignments table will store assignment information and the grades associated with each assignment.
+
+| Column Name | Data Type | Key | Description |
+|---|---|---|---|
+| assignment_id | INT | Primary Key | Unique identifier for each assignment. |
+| course_id | INT | Foreign Key | References the associated course. |
+| assignment_name | VARCHAR(100) | | Name of the assignment. |
+| category | VARCHAR(50) | | Assignment category. |
+| weight | DECIMAL(5,2) | | Percentage weight used in grade calculations. |
+| score | DECIMAL(5,2) | | Points earned by the student. |
+| max_score | DECIMAL(5,2) | | Maximum possible points. |
+
+**Purpose:**
+
+The Assignments table will store assignment grades and connect each assignment to its associated course.
+
+The Grade Calculation Component will retrieve this information to calculate current grades and estimate final course grades.
+
+## 3.4 Database Relationships
+
+The Courses and Assignments tables will have a one-to-many relationship.
+
+One course can contain multiple assignments, but each assignment will belong to one course.
+
+The `course_id` column in the Assignments table will act as a foreign key referencing the `course_id` primary key in the Courses table.
+
+**Relationship:**
+
+```text
+COURSES
+-------
+course_id (PK)
+course_name
+course_code
+credit_hours
+       |
+       | One-to-Many
+       |
+       v
+ASSIGNMENTS
+-----------
+assignment_id (PK)
+course_id (FK)
+assignment_name
+category
+weight
+score
+max_score
+```
+
+## 3.5 How the Database Supports Grade Calculations
+
+The database will provide the information needed to calculate student grades.
+
+For example, when a student enters assignment scores, the application will retrieve the assignment information and its associated grading weight.
+
+The Grade Calculation Component will use this information to calculate the current weighted grade.
+
+The application will also use the available grading information to estimate final grades and determine the score required on a final examination.
+
+For weighted grade calculations, the application will use the assignment scores and applicable grading weights. Missing assignments will be handled according to the grading rules configured for the course.
+
+## 3.6 Database Summary
+
+The shared MySQL database will provide centralized storage for the Final Grade Calculator.
+
+The Courses table will organize course information, while the Assignments table will store assignment details and associated grades.
+
+The relationship between these tables will allow the application to retrieve all assignments associated with a specific course.
+
+The database will support the Grade Calculation and Course Management components by providing the information necessary for application operations.
+
+---
+
+# Architecture Conclusion
+
+The proposed architecture for the Final Grade Calculator will use a three-tier architecture consisting of a presentation layer, application layer, and data layer.
+
+Java and Spring Boot will support backend development, while HTML, CSS, and JavaScript will provide the user interface. MySQL will serve as the shared relational database, and Docker will package the backend application for cloud deployment.
+
+The User Interface Component will allow students to interact with the application. The Grade Calculation Component will process student grades, while the Course Management Component will manage course and assignment information. The Database Component will provide centralized storage for application information.
+
+This architecture will provide an organized foundation for developing the Final Grade Calculator while supporting maintainability, scalability, and future improvements.
+
+The proposed design will also allow the application to be deployed in a cloud environment where students can access its features through a web browser.

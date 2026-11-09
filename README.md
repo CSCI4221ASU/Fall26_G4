@@ -121,3 +121,13 @@
 ### Malachi Johnson
  
   No submission
+
+## Project 4
+
+### Jalen Davis
+
+  [See Jalen Davis Project4](Project4/JalenDavis/project4)
+
+### Malachi Johnson
+ 
+   [See Malachi Johnson Project4](Project4/MalachiJohnson/architecture.md)
